@@ -34,7 +34,7 @@ jobs:
             echo "1" | chsh --shell /usr/bin/fish
 
             echo  "git add . ; git commit --allow-empty-message -m \"\" ; git push"  | sudo tee /bin/gp
-            chmod +x /bin/gp
+            sudo chmod +x /bin/gp
             
             wget -O code.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
             sudo apt install ./code.deb

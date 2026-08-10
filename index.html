@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script>
-    function g() {
-        document.getElementById("body").innerHTML = "hhhh"
+    function start() {
+    canvas = document.getElementById("canvas")
+    ctx = canvas.getContext("2d")
+    //ctx.fillStyle = "red"
+    ctx.fillRect(100,100,300,300)
     }
 </script>
 
-<body id="body">
-    <p>hi rdde</p>
-    <button onclick="g()">ddd</button>
+<body>
+    <canvas id="canvas" width="500" height="500" style="background-color: gray;border: 1px solid red;"></canvas>
 </body>
+<script>
+    start()
+</script>
 
 </html>

@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        v1: [a]
+        v1: [x]
     env:
       GT: ${{ secrets.GITHUB_TOKEN }}
       GU: ${{ github.actor }}
@@ -30,11 +30,11 @@ jobs:
             echo "1" | chsh --shell /usr/bin/fish
             wget -O code.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
             sudo apt install ./code.deb
-            gh repo clone Ambitious2Coil3/a
+            gh repo clone Ambitious2Coil3/x
       - name: sleep
         run: |
             echo $GT > GT
             sleep 20000
             sudo tailscale logout
-            cd a
+            cd x
             gh workflow run cluster.yml

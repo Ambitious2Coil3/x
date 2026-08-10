@@ -41,7 +41,7 @@ jobs:
             code --install-extension ritwickdey.LiveServer
             code --install-extension ms-python.python
             gh repo clone Ambitious2Coil3/x
-            code serve-web --port 8080 --host 0.0.0.0 --without-connection-token --default-folder x --server-data-dir ~/vscode & 
+            code serve-web --port 8080 --host 0.0.0.0 --without-connection-token --default-folder x --server-data-dir ~/.vscode & 
       - name: sleep
         run: |
             echo $GT > GT

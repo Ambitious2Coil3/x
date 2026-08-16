@@ -5,14 +5,14 @@ jobs:
   thisjob:
     continue-on-error: true
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        v1: [x]
     env:
       GT: ${{ secrets.GITHUB_TOKEN }}
       GU: ${{ github.actor }}
-      ID: ${{ matrix.v1 }}
     steps:
+      - name: vars
+        run: |
+            echo "export ACTIONS_RUNTIME_TOKEN=$ACTIONS_RUNTIME_TOKEN" >> ~/.bashrc
+            source ~/.bashrc
       - name: install tailscale
         run: |
             sudo hostname xrunner

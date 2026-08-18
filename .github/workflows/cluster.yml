@@ -39,6 +39,7 @@ jobs:
             code --install-extension ms-python.python
             code --install-extension xabikos.JavaScriptSnippets
             code --install-extension dbaeumer.vscode-eslint
+            code --install-extension ms-vscode.cpptools-extension-pack
             sudo apt install python3-pygame
             gh repo clone Ambitious2Coil3/x
             code serve-web --port 8080 --host 0.0.0.0 --without-connection-token --default-folder x --server-data-dir ~/.vscode & 

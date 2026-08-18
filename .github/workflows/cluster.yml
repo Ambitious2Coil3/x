@@ -1,22 +1,18 @@
 on:
   workflow_dispatch:
 permissions: write-all
+env:
+  GT: ${{ secrets.GITHUB_TOKEN }}
+  GU: ${{ github.actor }}
 jobs:
   thisjob:
     timeout-minutes: 3600
     continue-on-error: true
     runs-on: ubuntu-latest
-    env:
-      GT: ${{ secrets.GITHUB_TOKEN }}
-      GU: ${{ github.actor }}
     steps:
-      - name: vars
-        run: |
-            echo "export ACTIONS_RUNTIME_TOKEN=$ACTIONS_RUNTIME_TOKEN" >> ~/.bashrc
-            source ~/.bashrc
       - name: install tailscale
         run: |
-            sudo hostname xrunner
+            sudo hostname runner
             curl -fsSL https://tailscale.com/install.sh | sh
             sudo tailscale up --auth-key=tskey-auth-ka6mUWUzeT11CNTRL-qJ654MUJ5diKG8iwfMGSci4GPJfh1EAg1 --advertise-exit-node
             echo "runner:1" | sudo chpasswd
@@ -53,3 +49,9 @@ jobs:
             sudo tailscale logout
             cd x
             gh workflow run cluster.yml
+  this2:
+    needs: thisjob
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 0

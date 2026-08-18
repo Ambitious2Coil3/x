@@ -49,9 +49,3 @@ jobs:
             sudo tailscale logout
             cd x
             gh workflow run cluster.yml
-  this2:
-    needs: thisjob
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - run: sleep 0

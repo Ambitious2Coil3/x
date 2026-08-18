@@ -12,6 +12,7 @@ jobs:
           sleep 99999
   this2:
     needs: this
+    if: always()
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:

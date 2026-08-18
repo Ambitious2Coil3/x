@@ -5,6 +5,7 @@ jobs:
   this:
     runs-on: ubuntu-latest
     timeout-minutes: 1
+    continue-on-error: true
     steps:
       - name: step
         run: |
@@ -12,5 +13,6 @@ jobs:
   this2:
     needs: this
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - run: sleep 99

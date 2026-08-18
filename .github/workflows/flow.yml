@@ -4,9 +4,13 @@ permissions: write-all
 jobs:
   this:
     runs-on: ubuntu-latest
-    timeout-minutes: 3600
+    timeout-minutes: 1
     steps:
       - name: step
         run: |
           sleep 99999
-          
+  this2:
+    needs: this
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 99

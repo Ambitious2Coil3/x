@@ -3,6 +3,7 @@ on:
 permissions: write-all
 jobs:
   thisjob:
+    timeout-minutes: 3600
     continue-on-error: true
     runs-on: ubuntu-latest
     env:

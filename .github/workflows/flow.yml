@@ -1,0 +1,12 @@
+on:
+  workflow_dispatch:
+permissions: write-all
+jobs:
+  this:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3600
+    steps:
+      - name: step
+        run: |
+          sleep 99999
+          

@@ -1,1 +1,2 @@
 disk00 filter=lfs diff=lfs merge=lfs -text
+ubuntu-14.04.6-desktop-amd64+mac.iso filter=lfs diff=lfs merge=lfs -text

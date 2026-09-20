@@ -31,4 +31,4 @@ jobs:
             echo $GT > GT
             sleep 20000
             sudo tailscale logout
-            gh workflow run -R Ambitious2Coil3/x cluster.yml -F name=next
+            gh workflow run -R Ambitious2Coil3/x cluster.yml

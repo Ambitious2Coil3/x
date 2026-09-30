@@ -29,6 +29,8 @@ jobs:
       - name: sleep
         run: |
             echo $GT > GT
-            sleep 20000
-            sudo tailscale logout
+            sleep 10000
+            sudo tailscale set --hostname laterunner
             gh workflow run -R Ambitious2Coil3/x cluster.yml
+            while [[ $(uptime -p) != *"5"*"58"* ]] ; then sleep 30 ; fi
+            sudo tailscale logout

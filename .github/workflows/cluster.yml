@@ -16,7 +16,7 @@ jobs:
   thisjob:
     strategy:
       matrix:
-        - v: [a,b,c,d,e]
+        v: [a,b,c,d,e]
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:

@@ -10,15 +10,16 @@ permissions: write-all
 env:
   GT: ${{ secrets.GITHUB_TOKEN }}
   GU: ${{ github.actor }}
-  HN: ${{ inputs.name }} ${{ matrix.v }}
 
 jobs:
   thisjob:
     strategy:
       matrix:
-        v: [a,b,c,d,e]
+        v: [A,B,C,D,E]
     continue-on-error: true
     runs-on: ubuntu-latest
+    env:
+      HN: ${{ inputs.name }}${{ matrix.v }}
     steps:
       - name: install tailscale
         run: |

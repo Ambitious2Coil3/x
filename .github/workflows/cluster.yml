@@ -5,12 +5,18 @@ on:
         default: runner
         type: string
 permissions: write-all
+
+
 env:
   GT: ${{ secrets.GITHUB_TOKEN }}
   GU: ${{ github.actor }}
-  HN: ${{ inputs.name }}
+  HN: ${{ inputs.name }} ${{ matrix.v }}
+
 jobs:
   thisjob:
+    strategy:
+      matrix:
+        - v: [a,b,c,d,e]
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +36,7 @@ jobs:
         run: |
             echo $GT > GT
             while [[ $(uptime -p) != *"5 hours"* ]] ; do sleep 30 ; done
-            sudo tailscale set --hostname laterunner
+            sudo tailscale set --hostname late$HN
             gh workflow run -R Ambitious2Coil3/x cluster.yml
             while [[ $(uptime -p) != *"5"*"58"* ]] ; do sleep 30 ; done
             sudo tailscale logout

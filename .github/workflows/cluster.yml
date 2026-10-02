@@ -44,6 +44,6 @@ jobs:
             run: |
               while [[ $(uptime -p) != *"5 hours"* ]] ; do sleep 30 ; done
               sudo tailscale set --hostname late$HN
-              gh workflow run -R Ambitious2Coil3/x cluster.yml
+              gh workflow run -R Ambitious2Coil3/x cluster.yml -F name=$HN
               while [[ $(uptime -p) != *"5"*"58"* ]] ; do sleep 30 ; done
               sudo tailscale logout

@@ -13,13 +13,10 @@ env:
 
 jobs:
   thisjob:
-    strategy:
-      matrix:
-        v: [A,B,C,D,E]
     continue-on-error: true
     runs-on: ubuntu-latest
     env:
-      HN: ${{ inputs.name }}${{ matrix.v }}
+      HN: ${{ inputs.name }}
     steps:
       - parallel:
           - name: set hostname

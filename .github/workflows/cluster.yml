@@ -25,7 +25,8 @@ jobs:
           - name: set hostname
             run: |
               sudo hostname $HN
-          - name: install tailscale
+          - id: 0
+            name: install tailscale
             run: |
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --auth-key=tskey-auth-ka6mUWUzeT11CNTRL-qJ654MUJ5diKG8iwfMGSci4GPJfh1EAg1 --advertise-exit-node
@@ -38,7 +39,8 @@ jobs:
           - name: logging in gh
             run: |
               echo $GT | gh auth login --with-token
-          - name: install fish and change it to default shell
+          - wait: 0
+            name: install fish and change it to default shell
             run: |
               sudo apt install fish
               echo "1" | chsh --shell /usr/bin/fish

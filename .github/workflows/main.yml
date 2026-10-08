@@ -9,6 +9,5 @@ jobs:
       - run: sudo apt install qemu-kvm
     snapshot: 
       image-name: img
-      version: 1
     
       

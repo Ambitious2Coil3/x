@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+name: workflow
+
+jobs:
+  this:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt install qemu-kvm
+    snapshot: 
+      image-name: img
+      version: 1
+    
+      

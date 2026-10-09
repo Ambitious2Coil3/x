@@ -19,11 +19,11 @@ jobs:
   thisjob:
     strategy:
       matrix:
-        v: ${{ inputs.name }}
+        v: ${{ inputs.list }}
     continue-on-error: true
     runs-on: ubuntu-26.04
     env:
-      HN: ${{ inputs.list }}
+      HN: ${{ inputs.name }}
     steps:
       - parallel:
           - name: set hostname

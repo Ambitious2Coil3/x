@@ -23,7 +23,7 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-26.04
     env:
-      HN: ${{ inputs.name }}
+      HN: ${{ inputs.list }}
     steps:
       - parallel:
           - name: set hostname

@@ -5,6 +5,9 @@ on:
       name:
         default: runner
         type: string
+      list:
+        default: "[1]"
+        type: string
 permissions: write-all
 
 
@@ -14,6 +17,9 @@ env:
 
 jobs:
   thisjob:
+    strategy:
+      matrix:
+        v: ${{ inputs.name }}
     continue-on-error: true
     runs-on: ubuntu-26.04
     env:

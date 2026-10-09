@@ -4,10 +4,8 @@ name: workflow
 
 jobs:
   this:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - run: sudo apt install qemu-kvm
-    snapshot: 
-      image-name: img
     
       

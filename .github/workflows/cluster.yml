@@ -6,7 +6,7 @@ on:
         default: runner
         type: string
       list:
-        default: "[1]"
+        default: '["1"]'
         type: string
 permissions: write-all
 
@@ -19,7 +19,7 @@ jobs:
   thisjob:
     strategy:
       matrix:
-        v: ${{ inputs.list }}
+        v: ${{ fromJson(inputs.list) }}
     continue-on-error: true
     runs-on: ubuntu-26.04
     env:

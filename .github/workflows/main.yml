@@ -1,6 +1,7 @@
 on:
   workflow_dispatch:
 name: workflow
+permissions: write-all
 jobs:
   upload:
     runs-on: ubuntu-26.04
@@ -18,5 +19,6 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          name: bin
+          name: thisart
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           

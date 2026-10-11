@@ -11,8 +11,9 @@ jobs:
           name: bin
           path: file
           compression-level: 0
-          overwite: true
+          overwrite: true
   download:
+    needs: upload
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/download-artifact@v8

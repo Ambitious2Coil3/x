@@ -4,6 +4,8 @@ name: workflow
 permissions: write-all
 jobs:
   this:
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-26.04
     steps:
       - run: |

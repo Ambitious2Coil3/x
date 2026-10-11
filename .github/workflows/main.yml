@@ -6,11 +6,12 @@ jobs:
   this:
     runs-on: ubuntu-26.04
     steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: thisart
       - run: |
-          gh release -R Ambitious2Coil3/x download disk
-          ls
-          cat disk* > disk
-      - uses: actions/upload-artifact@v7.0.2
+          cat disk >> disk
+      - uses: actions/upload-artifact@v7
         with:
           name: thisart
           path: disk

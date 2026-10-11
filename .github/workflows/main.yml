@@ -4,8 +4,10 @@ name: workflow
 
 jobs:
   this:
-    runs-on: self-hosted
+    runs-on: ubuntu-26.04
     steps:
-      - run: sudo apt install qemu-kvm
+      - run: |
+          gh release -R Ambitious2Coil3/x download disk
+          ls
     
       

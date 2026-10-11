@@ -1,20 +1,21 @@
 on:
   workflow_dispatch:
 name: workflow
-permissions: write-all
 jobs:
-  this:
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  upload:
     runs-on: ubuntu-26.04
     steps:
-      - run: |
-          gh run -R Ambitious2Coil3/x download -n thisart
-          cat disk* disk* disk* > disk
+      - run: dd if=/dev/urandom of=file count=5 bs=2g
       - uses: actions/upload-artifact@v7
         with:
-          name: thisart
-          path: disk
+          name: bin
+          path: file
           compression-level: 0
-    
-      
+          overwite: true
+  download:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: bin
+          

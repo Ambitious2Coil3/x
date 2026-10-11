@@ -10,11 +10,11 @@ jobs:
     steps:
       - run: |
           gh run -R Ambitious2Coil3/x download -n thisart
-          cat disk* >> disk*
+          cat disk* disk* disk* > disk
       - uses: actions/upload-artifact@v7
         with:
           name: thisart
-          path: disk*
+          path: disk
           compression-level: 0
     
       

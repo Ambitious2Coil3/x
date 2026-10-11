@@ -1,20 +1,18 @@
 on:
   workflow_dispatch:
 name: workflow
-
+permissions: write-all
 jobs:
   this:
     runs-on: ubuntu-26.04
     steps:
-      - uses: actions/download-artifact@v8
-        with:
-          name: thisart
       - run: |
-          cat disk >> disk
+          gh run -R Ambitious2Coil3/x download -n thisart
+          cat disk* >> disk*
       - uses: actions/upload-artifact@v7
         with:
           name: thisart
-          path: disk
+          path: disk*
           compression-level: 0
     
       

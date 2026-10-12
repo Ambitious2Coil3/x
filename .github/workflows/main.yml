@@ -12,4 +12,4 @@ jobs:
           name: bin
           path: file
           compression-level: 0
-          overwrite: true
+          overwrite: false

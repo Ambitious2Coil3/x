@@ -6,7 +6,7 @@ jobs:
   upload:
     runs-on: ubuntu-26.04
     steps:
-      - run: dd if=/dev/urandom of=file count=10 bs=2g
+      - run: dd if=/dev/urandom of=file count=15 bs=2g
       - uses: actions/upload-artifact@v7
         with:
           name: bin

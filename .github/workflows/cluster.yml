@@ -5,26 +5,16 @@ on:
       name:
         default: runner
         type: string
-      list:
-        default: '["1"]'
-        type: string
 permissions: write-all
-
-
 env:
   GT: ${{ secrets.GITHUB_TOKEN }}
   GU: ${{ github.actor }}
+  HN: ${{ inputs.name }}
 
 jobs:
   thisjob:
-    strategy:
-      matrix:
-        v: ${{ fromJson(inputs.list) }}
-        os: ["-arm",""]
     continue-on-error: true
-    runs-on: ubuntu-26.04${{ matrix.os }}
-    env:
-      HN: ${{ inputs.name }}${{ matrix.os }}
+    runs-on: ubuntu-26.04
     steps:
       - parallel:
           - name: set hostname

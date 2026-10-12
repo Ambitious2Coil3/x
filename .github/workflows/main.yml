@@ -2,6 +2,8 @@ on:
   workflow_dispatch:
 name: workflow
 permissions: write-all
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upload:
     runs-on: ubuntu-26.04

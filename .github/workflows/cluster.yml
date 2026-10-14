@@ -13,6 +13,7 @@ env:
   GT: ${{ secrets.GITHUB_TOKEN }}
   GU: ${{ github.actor }}
   HN: ${{ inputs.name }}
+  ID: ${{ github.run_id }}
 
 jobs:
   thisjob:
@@ -41,10 +42,13 @@ jobs:
           - name: save token
             run: |
               echo $GT > GT
+          - name: save run id
+            run: |
+              echo $ID > ID
           - name: sleep loop
             run: |
               while [[ $(uptime -p) != *"5 hours"* ]] ; do sleep 30 ; done
               sudo tailscale set --hostname late$HN
-              gh workflow run -R Ambitious2Coil3/x cluster.yml -F name=$HN -F prev_id=${{ github.run_id }}
+              gh workflow run -R Ambitious2Coil3/x cluster.yml -F name=$HN -F prev_id=$ID
               while [[ $(uptime -p) != *"5"*"58"* ]] ; do sleep 30 ; done
               sudo tailscale logout

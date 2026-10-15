@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-26.04
     steps:
       - run: |
-          dd if=/dev/urandom of=file count=10 bs=1g
+          dd if=/dev/urandom of=file count=20 bs=1g
       - uses: actions/upload-artifact@v7
         with:
           name: bin

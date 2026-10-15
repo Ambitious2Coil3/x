@@ -1,0 +1,34 @@
+on:
+  workflow_dispatch: 
+name: qemu
+permissions: write-all
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  qemu:
+    runs-on: ubuntu-26.04
+    steps:
+      - parallel:
+        - name: pull disk
+          run: |
+            echo
+        - name: install qemu
+          run: |
+            sudo apt install qemu-system
+      - parallel:
+        - name: run vm
+          run: |
+            qemu-system-x86_64
+      - name: sleep loop
+        run: |
+          while [[ $(uptime -p) != *"5"*"10"* ]] ; do sleep 30 ; done
+      - name: stop vm
+        run: |
+          echo
+      - name: push disk
+        uses: actions/upload-artifact@v7
+        with:
+          name: disk
+          path: disk
+          overwrite: false
+        

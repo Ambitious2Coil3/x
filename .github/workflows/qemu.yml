@@ -15,10 +15,9 @@ jobs:
         - name: install qemu
           run: |
             sudo apt install qemu-system
-      - parallel:
-        - name: run vm
-          run: |
-            sudo qemu-system-x86_64 -display none -daemonize -enable-kvm -smp $(nproc) -m 12g -drive file=disk
+      - name: run vm
+        run: |
+          sudo qemu-system-x86_64 -display none -daemonize -enable-kvm -smp $(nproc) -m 12g -drive file=disk
       - name: sleep loop
         run: |
           while [[ $(uptime -p) != *"5"*"10"* ]] ; do sleep 30 ; done

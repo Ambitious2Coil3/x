@@ -18,13 +18,13 @@ jobs:
       - parallel:
         - name: run vm
           run: |
-            qemu-system-x86_64
+            sudo qemu-system-x86_64 -daemonize -enable-kvm -smp $(nproc) -m 75% -drive file=disk
       - name: sleep loop
         run: |
           while [[ $(uptime -p) != *"5"*"10"* ]] ; do sleep 30 ; done
       - name: stop vm
         run: |
-          echo
+          pkill -f qemu
       - name: push disk
         uses: actions/upload-artifact@v7
         with:

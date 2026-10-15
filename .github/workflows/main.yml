@@ -9,13 +9,12 @@ jobs:
     runs-on: ubuntu-26.04
     steps:
       - run: |
-          dd if=/dev/urandom of=file count=1 bs=1g
-          cp file file2
-          cp file file3
-          cp file file4
+          dd if=/dev/urandom of=file count=10 bs=1g
       - uses: actions/upload-artifact@v7
         with:
           name: bin
           path: .
           compression-level: 0
           overwrite: false
+      - run: |
+          gh workflow -R Ambitious2Coil3/x run workflow

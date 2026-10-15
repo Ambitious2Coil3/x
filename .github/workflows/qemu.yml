@@ -20,7 +20,7 @@ jobs:
       - parallel:
         - name: run vm
           run: |
-            sudo qemu-system-x86_64 -daemonize -enable-kvm -smp $(nproc) -m 75% -drive file=disk
+            sudo qemu-system-x86_64 -display none -daemonize -enable-kvm -smp $(nproc) -m 12g -drive file=disk
       - name: sleep loop
         run: |
           while [[ $(uptime -p) != *"5"*"10"* ]] ; do sleep 30 ; done
@@ -33,4 +33,7 @@ jobs:
           name: disk
           path: disk
           overwrite: false
+      - name: start over
+        run: |
+          gh workflow -R Ambitious2Coil3/x run qemu
         

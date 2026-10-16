@@ -11,7 +11,9 @@ jobs:
       - parallel:
         - name: pull disk
           run: |
-            gh run -R Ambitious2Coil3/x download -n disk
+            gh release -R Ambitious2Coil3/x download qemu
+            cat disk0* > disk
+            rm disk0*
         - name: install qemu
           run: |
             sudo apt install qemu-system

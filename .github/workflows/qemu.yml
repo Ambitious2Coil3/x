@@ -23,7 +23,7 @@ jobs:
           while [[ $(uptime -p) != *"5"*"10"* ]] ; do sleep 30 ; done
       - name: stop vm
         run: |
-          pkill -f qemu
+          sudo pkill -f qemu
       - name: push disk
         uses: actions/upload-artifact@v7
         with:

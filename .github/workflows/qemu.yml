@@ -1,5 +1,10 @@
 on:
   workflow_dispatch: 
+    inputs:
+      previd:
+        default: 0
+        required: true
+        type: number
         
 name: qemu
 permissions: write-all
@@ -16,6 +21,7 @@ jobs:
           uses: actions/download-artifact@v8
           with:
             name: disk
+            run-id: ${{ inputs.previd }}
             github-token: ${{ secrets.GITHUB_TOKEN }}
             skip-decompress: true
         - name: install qemu
@@ -35,5 +41,4 @@ jobs:
           overwrite: false
       - name: start over
         run: |
-          gh workflow -R Ambitious2Coil3/x run qemu
-        
+          gh workflow -R Ambitious2Coil3/x run qemu -F previd=${{ github.run_id }}     

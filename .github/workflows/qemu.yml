@@ -10,6 +10,8 @@ jobs:
     steps:
       - parallel:
         - name: pull disk
+          env:
+            TMPDIR: /home/runner
           run: |
             gh run -R Ambitious2Coil3/x download -n disk
         - name: install qemu

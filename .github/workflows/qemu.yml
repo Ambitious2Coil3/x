@@ -1,5 +1,11 @@
 on:
   workflow_dispatch: 
+    inputs:
+      previd:
+        default: 0
+        type: number
+        required: true
+        
 name: qemu
 permissions: write-all
 env:
@@ -12,8 +18,11 @@ jobs:
         - name: pull disk
           env:
             TMPDIR: /home/runner
-          run: |
-            gh run -R Ambitious2Coil3/x download -n disk
+          uses: actions/download-artifact@v8
+          with:
+            run-id: ${{ inputs.previd }}
+            name: disk
+            skip-decompress: true
         - name: install qemu
           run: |
             sudo apt install qemu-system
@@ -31,5 +40,5 @@ jobs:
           overwrite: false
       - name: start over
         run: |
-          gh workflow -R Ambitious2Coil3/x run qemu
+          gh workflow -R Ambitious2Coil3/x run qemu -F previd=${{ github.run_id }}
         

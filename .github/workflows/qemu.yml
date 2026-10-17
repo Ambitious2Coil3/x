@@ -20,7 +20,8 @@ jobs:
             TMPDIR: /home/runner
           uses: actions/download-artifact@v8
           with:
-            run-id: ${{ inputs.previd }}
+            name: disk
+            github-token: ${{ secrets.GITHUB_TOKEN }}
             skip-decompress: true
         - name: install qemu
           run: |

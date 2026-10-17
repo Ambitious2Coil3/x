@@ -1,10 +1,5 @@
 on:
   workflow_dispatch: 
-    inputs:
-      previd:
-        default: 0
-        type: string
-        required: true
         
 name: qemu
 permissions: write-all
@@ -40,5 +35,5 @@ jobs:
           overwrite: false
       - name: start over
         run: |
-          gh workflow -R Ambitious2Coil3/x run qemu -F previd=${{ github.run_id }}
+          gh workflow -R Ambitious2Coil3/x run qemu
         

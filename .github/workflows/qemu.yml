@@ -1,3 +1,4 @@
+
 on:
   workflow_dispatch: 
     inputs:
@@ -37,6 +38,7 @@ jobs:
           name: disk
           path: disk
           compression-level: 0
+          archive: false
           overwrite: false
       - name: start over
         run: |

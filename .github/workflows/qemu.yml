@@ -3,7 +3,7 @@ on:
     inputs:
       previd:
         default: 0
-        type: number
+        type: string
         required: true
         
 name: qemu

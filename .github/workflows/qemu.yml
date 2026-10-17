@@ -21,7 +21,6 @@ jobs:
           uses: actions/download-artifact@v8
           with:
             run-id: ${{ inputs.previd }}
-            name: disk
             skip-decompress: true
         - name: install qemu
           run: |

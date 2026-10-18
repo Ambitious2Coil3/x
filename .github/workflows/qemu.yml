@@ -30,7 +30,7 @@ jobs:
           run: |
             sudo apt install qemu-system
       - name: run vm
-        timeout-minutes: 3
+        timeout-minutes: 300
         continue-on-error: true
         run: |
           sudo qemu-system-x86_64 -display none -enable-kvm -smp $(nproc) -m 12g -drive file=disk

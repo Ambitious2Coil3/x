@@ -8,6 +8,10 @@ on:
       prev_id:
         default: 0
         type: number
+      os:
+        default: ubuntu-26.04
+        type: string
+        required: true
 permissions: write-all
 env:
   GT: ${{ secrets.GITHUB_TOKEN }}
@@ -18,7 +22,7 @@ env:
 jobs:
   thisjob:
     continue-on-error: true
-    runs-on: ubuntu-26.04
+    runs-on: ${{ inputs.os }}
     steps:
       - parallel:
           - name: set hostname

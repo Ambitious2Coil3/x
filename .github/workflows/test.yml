@@ -1,10 +1,11 @@
 on: 
   workflow_dispatch:
+name: test
 permissions: write-all
 jobs:
   this:
     runs-on: ubuntu-26.04
     container:
-      image: ghcr.io/ambitious2coil3/base
+      image: ghcr.io/ambitious2coil3/arch
     steps:
       - run: df -h

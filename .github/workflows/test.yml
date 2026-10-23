@@ -1,0 +1,10 @@
+on: 
+  workflow_dispatch:
+permissions: write-all
+jobs:
+  this:
+    runs-on: ubuntu-26.04
+    container:
+      image: ghcr.io/ambitious2coil3/base
+    steps:
+      - run: df -h

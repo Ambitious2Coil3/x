@@ -2,10 +2,11 @@ on:
   workflow_dispatch:
 name: test
 permissions: write-all
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   this:
     runs-on: ubuntu-26.04
-    container:
-      image: ghcr.io/ambitious2coil3/chrome
     steps:
-      - run: df -h
+      - run: |
+          gh repo clone Ambitious2Coil3/x

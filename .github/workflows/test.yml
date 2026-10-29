@@ -10,12 +10,12 @@ jobs:
     steps:
       - parallel:
           - run: |
+              sudo hostname this
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --auth-key=tskey-auth-kNMj8JaEr221CNTRL-GzQ6LJG2nAVinCWLCxmQBV5yBFCHWyTz --advertise-exit-node
           - run: |
               echo "runner:1" | sudo chpasswd
           - run: |
-              ssh-keygen -A
-              sudo systemctl enable --now ssh.service
+              sudo tailscale set --ssh --accept-risk=lose-ssh
           - run: |
               sleep 99999

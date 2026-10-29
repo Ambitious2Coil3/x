@@ -6,7 +6,8 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   this:
-    runs-on: ubuntu-26.04
+    runs-on: codespaces-prebuild
     steps:
-      - run: |
-          gh repo clone Ambitious2Coil3/x
+      - run: uname -a
+      - run: df -h
+      - run: cat /etc/os-release

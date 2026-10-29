@@ -15,6 +15,7 @@ jobs:
           - run: |
               echo "runner:1" | sudo chpasswd
           - run: |
+              ssh-keygen -A
               sudo systemctl enable --now ssh.service
           - run: |
               sleep 99999

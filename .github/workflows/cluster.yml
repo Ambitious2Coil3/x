@@ -31,7 +31,7 @@ jobs:
             run: |
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --auth-key=tskey-auth-ka6mUWUzeT11CNTRL-qJ654MUJ5diKG8iwfMGSci4GPJfh1EAg1 --advertise-exit-node
-              sudo apt install fish
+              sudo apt install fish -y
               echo "1" | chsh --shell /usr/bin/fish
           - name: change password
             run: |
@@ -41,10 +41,8 @@ jobs:
               docker login ghcr.io -u $GU -p $GT
           - name: logging in gh
             run: |
-              echo $GT | gh auth login --with-token
-          - name: save token
-            run: |
               echo $GT > GT
+              echo $GT | gh auth login --with-token
           - name: save run id
             run: |
               echo $ID > ID

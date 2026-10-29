@@ -11,3 +11,4 @@ jobs:
       - run: uname -a
       - run: df -h
       - run: cat /etc/os-release
+      - run: whoami

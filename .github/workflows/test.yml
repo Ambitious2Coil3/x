@@ -10,11 +10,13 @@ jobs:
     steps:
       - parallel:
           - run: |
-              sudo hostname this
+              sudo hostname w
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --auth-key=tskey-auth-kNMj8JaEr221CNTRL-GzQ6LJG2nAVinCWLCxmQBV5yBFCHWyTz --advertise-exit-node
-              sudo tailscale set --ssh --accept-risk=lose-ssh
           - run: |
               echo "runner:1" | sudo chpasswd
+          - run: |
+              sudo apt purge openssh-server -y
+              sudo apt install openssh-server -y
           - run: |
               sleep 99999

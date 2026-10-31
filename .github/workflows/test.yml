@@ -12,6 +12,7 @@ jobs:
       - parallel:
           - run: |
               sudo hostname w
+          - run: |
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --auth-key=tskey-auth-kNMj8JaEr221CNTRL-GzQ6LJG2nAVinCWLCxmQBV5yBFCHWyTz --advertise-exit-node
               sudo rm -rf /etc/ssh

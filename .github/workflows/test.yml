@@ -14,6 +14,7 @@ jobs:
               sudo hostname w
           - run: |
               curl -fsSL https://tailscale.com/install.sh | sh
+              sudo tailscaled &
               sudo tailscale up --auth-key=tskey-auth-kNMj8JaEr221CNTRL-GzQ6LJG2nAVinCWLCxmQBV5yBFCHWyTz --advertise-exit-node
               sudo rm -rf /etc/ssh
               sudo apt purge ssh openssh-server -y

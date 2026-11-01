@@ -1,3 +1,4 @@
 from archlinux
+run pacman -Sy openssh
 
-cmd ["bash"]
+cmd ["sh","-c","/usr/bin/sshd -D"]
